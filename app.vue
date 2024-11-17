@@ -50,6 +50,10 @@
     }
   }
 
+  watch(page, () => {
+    searchAnime();
+  })
+
 </script>
 
 <template>
