@@ -42,7 +42,6 @@
       console.log(pagination.value);
     }
 
-    console.log(searchResult.value);
     } catch(error) {
       console.error('Errore durante la ricerca:', error);
     } finally {
