@@ -5,7 +5,7 @@
   const myAnime = ref([]);
   const searchResult = ref([]);
   const pending = ref(false);
-  const page = ref(1)
+  const page = ref(1);
 
 
   const toast = useToast()
@@ -61,7 +61,7 @@
 <UContainer class="max-w-[1080px] mx-auto px-4">
     <h1 class="text-4xl my-5">AnimeTracker</h1>
 
-<UForm @submit="searchAnime(page)">
+<UForm @submit="searchAnime()">
  <UFormGroup help="Search for you anime">
    <UInput v-model="query" placeholder="Naruto"></UInput>
  </UFormGroup>
