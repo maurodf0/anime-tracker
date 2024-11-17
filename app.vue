@@ -90,15 +90,15 @@
       </div>
     </div>
     <div class="my-4 mx-auto">
-    <UPagination 
-      v-model="page" 
-      :page-count="5" 
-      :total="searchResult.length" 
-      show-last 
-      show-first
-      :first-button="{ icon: 'i-heroicons-arrow-small-left-20-solid', label: 'First', color: 'gray' }"
-      :last-button="{ icon: 'i-heroicons-arrow-small-right-20-solid', trailing: true, label: 'Last', color: 'gray' }" 
-      />
+ <UPagination
+          v-model="page"
+          :page-count="pagination?.items?.per_page" 
+          :total="pagination?.items?.total"
+          show-last
+          show-first
+          :first-button="{ icon: 'i-heroicons-arrow-small-left-20-solid', label: 'First', color: 'gray' }"
+          :last-button="{ icon: 'i-heroicons-arrow-small-right-20-solid', trailing: true, label: 'Last', color: 'gray' }"
+        />
     </div>
 
   </div>
