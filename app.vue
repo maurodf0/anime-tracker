@@ -16,7 +16,7 @@
     } )
   })
 
-  const searchAnime = async () => {
+  const searchAnime = async (number = 1) => {
     if (!query.value){
       toast.add({
         title: 'You must insert data for search',
@@ -26,7 +26,7 @@
     }; 
 
     pending.value = true;
-    const url = `https://api.jikan.moe/v4/anime?q=${query.value}&page=${page.value}`;
+    const url = `https://api.jikan.moe/v4/anime?q=${query.value}&page=${number}`;
     try {
     const {data, error} = await useFetch(url);
     if(error.value){
@@ -51,7 +51,7 @@
   }
 
   watch(page, () => {
-    searchAnime();
+    searchAnime(page.value);
   })
 
 </script>
@@ -61,7 +61,7 @@
 <UContainer class="max-w-[1080px] mx-auto px-4">
     <h1 class="text-4xl my-5">AnimeTracker</h1>
 
-<UForm @submit="searchAnime">
+<UForm @submit="searchAnime(page)">
  <UFormGroup help="Search for you anime">
    <UInput v-model="query" placeholder="Naruto"></UInput>
  </UFormGroup>
