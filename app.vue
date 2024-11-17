@@ -1,6 +1,7 @@
 <script setup>
 
   const query = ref('');
+  const pagination = ref({});
   const myAnime = ref([]);
   const searchResult = ref([]);
   const pending = ref(false);
@@ -16,8 +17,16 @@
   })
 
   const searchAnime = async () => {
+    if (!query.value){
+      toast.add({
+        title: 'You must insert data for search',
+        description: 'Write your anime before start searching',
+        color: 'red'
+      })
+    }; 
+
     pending.value = true;
-    const url = `https://api.jikan.moe/v4/anime?q=${query.value}`
+    const url = `https://api.jikan.moe/v4/anime?q=${query.value}&page=${page.value}`;
     try {
     const {data, error} = await useFetch(url);
     if(error.value){
@@ -28,7 +37,9 @@
       })
     } else {
       searchResult.value = data.value.data;
+      pagination.value = data.value.pagination;
       console.log(searchResult.value);
+      console.log(pagination.value);
     }
 
     console.log(searchResult.value);
