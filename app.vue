@@ -44,7 +44,7 @@
 
 <template>
 
-<div class="max-w-[1080px] mx-auto px-4">
+<UContainer class="max-w-[1080px] mx-auto px-4">
     <h1 class="text-4xl my-5">AnimeTracker</h1>
 
 <UForm @submit="searchAnime">
@@ -58,7 +58,7 @@
    <h2 class="text-5xl font-bold my-4">Anime List</h2>
 
    <div v-if="searchResult.length">
-    <div class="grid lg:grid-cols-3 grid-cols-1 gap-4">
+    <div class="grid lg:grid-cols-3 grid-cols-1 gap-4 items-stretch">
       <div v-for="anime in searchResult" :key="anime.mal_id">
        <UCard>
         <template #header>
@@ -83,7 +83,8 @@
       show-last 
       show-first
       :first-button="{ icon: 'i-heroicons-arrow-small-left-20-solid', label: 'First', color: 'gray' }"
-      :last-button="{ icon: 'i-heroicons-arrow-small-right-20-solid', trailing: true, label: 'Last', color: 'gray' }" />
+      :last-button="{ icon: 'i-heroicons-arrow-small-right-20-solid', trailing: true, label: 'Last', color: 'gray' }" 
+      />
     </div>
 
   </div>
@@ -95,6 +96,6 @@
 
 
   <UNotifications />
-</div>
+</UContainer>
 
 </template>
