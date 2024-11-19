@@ -1,6 +1,8 @@
 <template>
     <article>
-        <h1>{{  }}</h1>
+        <h1>{{ anime.title }}</h1>
+        <img :src="anime.images.webp.large_image_url" />
+        <p>{{ anime.synopsis }}</p>
 
     </article>
 </template>
@@ -26,8 +28,8 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
         color: 'red'
       })
     } else {
-
-        console.log(dataFecth.data);
+        anime.value = dataFecth.data;
+        console.log(anime.value);
     }
 
 }
