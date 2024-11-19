@@ -1,7 +1,7 @@
 <template>
     <article>
         <h1>{{ anime.title }}</h1>
-        <img :src="anime.images.webp.large_image_url" />
+        <img :src="anime.images?.webp?.large_image_url" />
         <p>{{ anime.synopsis }}</p>
 
     </article>
