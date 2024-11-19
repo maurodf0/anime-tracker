@@ -85,7 +85,7 @@
           <p :class="anime.score > 6 ? 'text-green-500' : 'text-red-500' ">{{anime.score}}</p>
         </div>
         <UButton class="mt-4" variant="solid">
-          <NuxtLink :to="anime.mal_id">Discover More</NuxtLink>
+          <NuxtLink :to="anime.mal_id.toString()">Discover More</NuxtLink>
           </UButton>
       </UCard>
       </div>
