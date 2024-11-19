@@ -23,13 +23,13 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
         color: 'red'
       })
     } else {
-        console.log(data);
+        console.log(data.value);
     }
 
 } catch(error) {
       console.error('Errore durante la ricerca:', error);
     } finally {
-        console.log(data);
+        console.log(data.value);
     }
 
 }
