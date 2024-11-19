@@ -1,9 +1,7 @@
 <template>
     <article>
-        <h1>test</h1>
-        {{ route.params.id }}
+        <h1>{{  }}</h1>
 
-        {{ url }}
     </article>
 </template>
 
@@ -13,27 +11,23 @@ const route = useRoute()
 const toast = useToast();
 const id = route.params.id;
 
+let anime = ref({});
+
 const url = `https://api.jikan.moe/v4/anime/${id}`;
 
 
 
     const fetchSingleAnime = async (url) => {
-        console.log('START');
-    try {
-    const {data, error} = await useFetch(url);
-    if(error){
+   const dataFecth = await $fetch(url);
+
+    if(!dataFecth){
         toast.add({
         title: 'Error retriving data',
         color: 'red'
       })
     } else {
-        console.log(data.value);
-    }
 
-} catch(error) {
-      console.error('Errore durante la ricerca:', error);
-    } finally {
-      
+        console.log(dataFecth.data);
     }
 
 }
