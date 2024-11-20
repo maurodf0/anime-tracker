@@ -5,5 +5,8 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
   modules: ['@nuxt/ui', '@nuxtjs/tailwindcss']
 })
