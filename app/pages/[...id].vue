@@ -1,13 +1,13 @@
 <template>
     <UContainer class="max-w-[1080px] mx-auto px-4">
         <article>
-            <h1 class="text-6xl font-weight mb-4">{{ anime.title }}</h1>
+            <h1 class="text-6xl font-weight mb-4">{{ anime.title }} - {{ anime.title_japanese && anime.title_japanese }}</h1>
             <div class="info-wrapper flex justify-center gap-4">
                 <div class="img-wrapper relative w-1/4">
                     <img class="mb-4" :src="anime.images?.webp?.large_image_url" />
                     <p 
                         :class="anime.score > 6 ? 'text-green-500' : 'text-red-500' "
-                        class="absolute top-5 right-10 bg-slate-800 p-2 py-3 border rounded-full font-bold">{{anime.score}}</p>
+                        class="absolute top-5 right-5 bg-slate-800 px-2 py-1 border rounded-full font-bold">{{anime.score}}</p>
 
                  </div>
                 <div class="w-3/4">
