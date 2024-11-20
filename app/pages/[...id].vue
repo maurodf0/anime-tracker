@@ -3,8 +3,17 @@
         <article>
             <h1 class="text-6xl font-weight mb-4">{{ anime.title }}</h1>
             <div class="info-wrapper flex justify-center gap-4">
-                <img class="mb-4" :src="anime.images?.webp?.large_image_url" />
-                <p>{{ anime.synopsis }}</p>
+                <div class="img-wrapper relative w-1/3">
+                    <img class="mb-4" :src="anime.images?.webp?.large_image_url" />
+                    <p 
+                        :class="anime.score > 6 ? 'text-green-500' : 'text-red-500' "
+                        class="absolute top-5 right-10 bg-slate-800 p-2 py-3 border rounded-full font-bold">{{anime.score}}</p>
+
+                 </div>
+                <div class="w-2/3">
+                    <em>{{ anime.background }}</em>
+                    <p class="mt-4">{{ anime.synopsis }}</p>
+                </div>
             </div>
 
         </article>
