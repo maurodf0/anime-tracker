@@ -3,21 +3,21 @@
         <article>
             <h1 class="text-6xl font-weight mb-4">{{ anime.title }}</h1>
             <div class="info-wrapper flex justify-center gap-4">
-                <div class="img-wrapper relative w-1/3">
+                <div class="img-wrapper relative w-1/4">
                     <img class="mb-4" :src="anime.images?.webp?.large_image_url" />
                     <p 
                         :class="anime.score > 6 ? 'text-green-500' : 'text-red-500' "
                         class="absolute top-5 right-10 bg-slate-800 p-2 py-3 border rounded-full font-bold">{{anime.score}}</p>
 
                  </div>
-                <div class="w-2/3">
+                <div class="w-3/4">
                     <em>{{ anime.background }}</em>
                     <p class="mt-4">{{ anime.synopsis }}</p>
                 </div>
             </div>
 
             <h2 class="text-2xl mb-4">Trailer</h2>
-            <iframe width="560" height="315" :src="anime.trailer.embed_url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" :src="anime?.trailer?.embed_url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </article>
     </UContainer>
 </template>
