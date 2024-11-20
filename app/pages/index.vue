@@ -23,6 +23,7 @@
         description: 'Write your anime before start searching',
         color: 'red'
       })
+      return ;
     }; 
 
     pending.value = true;
