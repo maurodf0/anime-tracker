@@ -1,10 +1,14 @@
 <template>
-    <article>
-        <h1>{{ anime.title }}</h1>
-        <img :src="anime.images?.webp?.large_image_url" />
-        <p>{{ anime.synopsis }}</p>
+    <UContainer class="max-w-[1080px] mx-auto px-4">
+        <article>
+            <h1 class="text-6xl font-weight mb-4">{{ anime.title }}</h1>
+            <div class="info-wrapper flex justify-center gap-4">
+                <img class="mb-4" :src="anime.images?.webp?.large_image_url" />
+                <p>{{ anime.synopsis }}</p>
+            </div>
 
-    </article>
+        </article>
+    </UContainer>
 </template>
 
 <script setup>
