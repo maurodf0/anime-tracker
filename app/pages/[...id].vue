@@ -1,5 +1,5 @@
 <template>
-    <UContainer class="max-w-[1080px] mx-auto px-4">
+    <UContainer class="max-w-[1080px] mx-auto px-4 min-h-screen">
         <article>
             <h1 class="text-6xl font-weight mb-4">{{ anime.title }} - {{ anime.title_japanese && anime.title_japanese }}</h1>
             <div class="info-wrapper flex justify-center gap-4">
