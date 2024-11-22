@@ -58,7 +58,7 @@
 </script>
 
 <template>
-    <UContainer class="max-w-[1080px] mx-auto px-4">
+    <UContainer class="max-w-[1080px] mx-auto px-4 min-h-screen">
 
 <UForm @submit="searchAnime()">
  <UFormGroup help="Search for your anime">
