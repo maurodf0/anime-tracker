@@ -19,8 +19,9 @@
             <h2 class="text-2xl mb-4">Trailer</h2>
             <iframe width="560" height="315" :src="anime?.trailer?.embed_url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </article>
-        <UButton @click="startTracking" variant="solid">Start Tracking</UButton>
+        <UButton class="my-8" @click="startTracking" variant="solid">Start Tracking</UButton>
     </UContainer>
+    <UNotifications />
 </template>
 
 <script setup>
@@ -37,6 +38,12 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
     const startTracking = () => {
         console.log('track');
         console.log(`You clicked ${id}'s anime'`);
+
+        toast.add({
+            title: 'Anime tracking with success',
+            description: `You're added ${anime.value.title} to your anime tracked list`,
+            color: 'green',
+        })
     }
 
     const fetchSingleAnime = async (url) => {
