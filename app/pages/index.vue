@@ -12,8 +12,8 @@
       query: z.string().min(2, 'Must be at least 2 characters')
 });
 
-const state = reactive({
-   query: 'ciao'
+const state = ref({
+   query: ''
 });
 
 
@@ -26,9 +26,10 @@ const state = reactive({
   })
 
   const searchAnime = async (number = 1) => {
-    console.log(state.query.value);
+    console.log(state.value.query)
+   
 
-    if (!state.query.value){
+    if (!state.value.query){
       toast.add({
         title: 'You must insert data for search',
         description: 'Write your anime before start searching',
@@ -38,7 +39,7 @@ const state = reactive({
     }; 
 
     pending.value = true;
-    const url = `https://api.jikan.moe/v4/anime?q=${state.query.value}&page=${number}`;
+    const url = `https://api.jikan.moe/v4/anime?q=${state.value.query}&page=${number}`;
     console.log(url);
     try {
     const {data, error} = await useFetch(url);
