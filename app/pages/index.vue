@@ -91,10 +91,11 @@ const state = ref({
   @submit="searchAnime()"
   :state="state"
   :schema="schema"
+  class="flex w-full"
   >
  <UFormGroup 
-  help="Search for your anime"
   :required="true"
+   class="w-full"
   name="query"
   >
    <UInput 
@@ -106,7 +107,7 @@ const state = ref({
  <UButton 
   variant="solid" 
   :loading="pending"
-  icon="i-heroicons-outline-magnifying-glass"></UButton>
+  icon="i-heroicons-outline-magnifying-glass">Search</UButton>
 </UForm>
 
 
