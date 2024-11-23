@@ -40,7 +40,7 @@ const state = ref({
 
     pending.value = true;
     const url = `https://api.jikan.moe/v4/anime?q=${state.value.query}&page=${number}`;
-    console.log(url);
+    
     try {
     const {data, error} = await useFetch(url);
     if(error.value){
@@ -49,14 +49,21 @@ const state = ref({
         description: error.value,
         color: 'red'
       })
-      console.log(url);
+
     } else {
+      if(!data.value.data.length ){  
+        toast.add({
+        title: 'No anime founded',
+        description: "we could not found you're anime, try with another keyword",
+        color: 'red'
+      })
+      state.value.query = '';
+      }
+
       searchResult.value = data.value.data;
       pagination.value = data.value.pagination;
 
-      console.log(state.value); // Verifica lo stato attuale
-      console.log(schema.safeParse(state.value)); // Verifica se lo schema valida i dati
-
+   
    
     }
 
@@ -72,8 +79,7 @@ const state = ref({
     searchAnime(page.value);
   })
 
-  console.log(state.value); // Verifica lo stato attuale
-console.log(schema.safeParse(state.value)); // Verifica se lo schema valida i dati
+  
 
 
 </script>
