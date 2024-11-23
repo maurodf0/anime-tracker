@@ -103,7 +103,10 @@ const state = ref({
     icon="i-heroicons-tv"
     ></UInput>
  </UFormGroup>
- <UButton variant="solid" :loading="pending">Search</UButton>
+ <UButton 
+  variant="solid" 
+  :loading="pending"
+  icon="i-heroicons-outline-magnifying-glass"></UButton>
 </UForm>
 
 
