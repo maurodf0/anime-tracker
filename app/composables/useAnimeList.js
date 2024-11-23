@@ -1,5 +1,7 @@
 export const useAnimeList = () => {
-    const myAnimeList = ref([]);
+    const myAnimeList = ref(
+        JSON.parse(localStorage.getItem('animeStorage')) || [] // Recupera i dati salvati o crea un array vuoto
+    );
     const toast = useToast();
 
 // Funzione per iniziare a tracciare un anime
