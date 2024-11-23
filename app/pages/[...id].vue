@@ -65,3 +65,4 @@ watch(() => id, (newId) => {
         fetchSingleAnime(updatedUrl);
     }
 }, { immediate: true });
+</script>

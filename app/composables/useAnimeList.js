@@ -34,12 +34,14 @@ const startTracking = (anime) => {
     });
 
     console.log('Updated myAnimeList:', myAnimeList.value);
+    watch(myAnimeList, () => {
+        localStorage.setItem('animeStorage', JSON.stringify(myAnimeList.value));
+    }, { deep: true });
 };
 
 return { 
     startTracking,
     myAnimeList
-    
 }
 }
 
