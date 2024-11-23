@@ -40,13 +40,13 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
 
     const startTracking = () => {
 
-        const myAnime = ref({
-            id: id[0],
+        const myAnime = {
+            id: id,
             title: anime.value.title,
             img: anime.value.images?.webp?.large_image_url,
             totalEpisodes: anime.value.episodes,
             currentEps: 0
-    });
+    };
 
         toast.add({
             title: 'Anime tracking with success',
@@ -54,7 +54,8 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
             color: 'green',
         })
 
-        myAnimeList.value.push(myAnime.value);
+        myAnimeList.value.push({ ...myAnime });
+        console.log(myAnimeList.value);
     }
     
     watch(myAnimeList, () => {
