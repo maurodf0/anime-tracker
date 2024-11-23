@@ -2,7 +2,6 @@
 
   import { z } from 'zod'
 
-  const query = ref('');
   const pagination = ref({});
   const myAnime = ref([]);
   const searchResult = ref([]);
@@ -14,7 +13,7 @@
 });
 
 const state = reactive({
-   query: undefined
+   query: 'ciao'
 });
 
 
@@ -27,7 +26,9 @@ const state = reactive({
   })
 
   const searchAnime = async (number = 1) => {
-    if (!query.value){
+    console.log(state.query.value);
+
+    if (!state.query.value){
       toast.add({
         title: 'You must insert data for search',
         description: 'Write your anime before start searching',
@@ -37,7 +38,8 @@ const state = reactive({
     }; 
 
     pending.value = true;
-    const url = `https://api.jikan.moe/v4/anime?q=${query.value}&page=${number}`;
+    const url = `https://api.jikan.moe/v4/anime?q=${state.query.value}&page=${number}`;
+    console.log(url);
     try {
     const {data, error} = await useFetch(url);
     if(error.value){
@@ -46,6 +48,7 @@ const state = reactive({
         description: error.value,
         color: 'red'
       })
+      console.log(url);
     } else {
       searchResult.value = data.value.data;
       pagination.value = data.value.pagination;
@@ -76,7 +79,7 @@ const state = reactive({
   :schema="schema"
   >
  <UFormGroup help="Search for your anime">
-   <UInput v-model="query" placeholder="Naruto"></UInput>
+   <UInput v-model="state.query" placeholder="Naruto"></UInput>
  </UFormGroup>
  <UButton variant="solid" :loading="pending">Search</UButton>
 </UForm>
