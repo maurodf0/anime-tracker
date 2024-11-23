@@ -30,7 +30,7 @@ import {watch} from 'vue';
 
 const route = useRoute()
 const toast = useToast();
-const id = route.params.id[0];
+const id = Array.isArray(route.params.id) ? route.params.id[0] : route.params.id;
 const myAnimeList = ref([]);
 let anime = ref({});
 
@@ -40,41 +40,49 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
 
     const startTracking = () => {
 
-        const myAnime = {
-            id: id,
-            title: anime.value.title,
-            img: anime.value.images?.webp?.large_image_url,
-            totalEpisodes: anime.value.episodes,
-            currentEps: 0
-    };
-
         toast.add({
             title: 'Anime tracking with success',
             description: `You're added ${anime.value.title} to your anime tracked list`,
             color: 'green',
         })
 
-        myAnimeList.value.push({ ...myAnime });
-        console.log(myAnimeList.value);
+        myAnimeList.value.push({
+            id: id,
+            title: anime.value.title,
+            img: anime.value.images?.webp?.large_image_url,
+            totalEpisodes: anime.value.episodes,
+            currentEps: 0 }
+        );
+
     }
+
+
     
     watch(myAnimeList, () => {
     localStorage.setItem('animeStorage', JSON.stringify(myAnimeList.value));
-        }, { deep: true })
+}, { deep: true });
 
-    const fetchSingleAnime = async (url) => {
-   const dataFecth = await $fetch(url);
 
-    if(!dataFecth){
+const fetchSingleAnime = async (url) => {
+    try {
+        const dataFetch = await $fetch(url);
+        if (!dataFetch) {
+            toast.add({
+                title: 'Error retrieving data',
+                color: 'red',
+            });
+        } else {
+            anime.value = dataFetch.data;
+        }
+    } catch (error) {
         toast.add({
-        title: 'Error retriving data',
-        color: 'red'
-      })
-    } else {
-        anime.value = dataFecth.data;
+            title: 'Error fetching anime',
+            description: error.message,
+            color: 'red',
+        });
     }
+};
 
-}
 
 watch( () => id, (newId) => {
         if (newId) {
