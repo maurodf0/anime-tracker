@@ -26,6 +26,8 @@
 
 <script setup>
 
+import {watch} from 'vue';
+
 const route = useRoute()
 const toast = useToast();
 const id = route.params.id;
@@ -39,7 +41,7 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
     const startTracking = () => {
 
         const myAnime = ref({
-            id: id,
+            id: id[0],
             title: anime.value.title,
             img: anime.value.images?.webp?.large_image_url,
             totalEpisodes: anime.value.episodes,
