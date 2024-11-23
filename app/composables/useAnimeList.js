@@ -1,0 +1,43 @@
+export const useAnimeList = () => {
+    const myAnimeList = ref([]);
+    const toast = useToast();
+
+// Funzione per iniziare a tracciare un anime
+const startTracking = (anime) => {
+    const newAnime = {
+        id: anime.mail_id,
+        title: anime.title,
+        img: anime.images?.webp?.large_image_url,
+        totalEpisodes: anime.episodes,
+        currentEps: 0,
+    };
+
+   
+    if (myAnimeList.value.some((a) => a.id === newAnime.id)) {
+        toast.add({
+            title: 'Anime already tracked',
+            description: `${anime.value.title} is already in your list`,
+            color: 'yellow',
+        });
+        return;
+    }
+
+    // Aggiungi il nuovo anime
+    myAnimeList.value.push(newAnime);
+
+    toast.add({
+        title: 'Anime tracking with success',
+        description: `You've added ${anime.title} to your anime tracked list`,
+        color: 'green',
+    });
+
+    console.log('Updated myAnimeList:', myAnimeList.value);
+};
+
+return { 
+    startTracking,
+    myAnimeList
+    
+}
+}
+

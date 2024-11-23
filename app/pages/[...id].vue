@@ -19,7 +19,7 @@
             <h2 class="text-2xl mb-4">Trailer</h2>
             <iframe width="560" height="315" :src="anime?.trailer?.embed_url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </article>
-        <UButton class="my-8" @click="startTracking" variant="solid">Start Tracking</UButton>
+        <UButton class="my-8" @click="startTracking(anime)" variant="solid">Start Tracking</UButton>
     </UContainer>
     <UNotifications />
 </template>
@@ -31,50 +31,11 @@ import {watch} from 'vue';
 const route = useRoute()
 const toast = useToast();
 const id = Array.isArray(route.params.id) ? route.params.id[0] : route.params.id;
-const myAnimeList = ref([]);
 let anime = ref({});
+const { startTracking, myAnimeList } = useAnimeList();
 
 
 const url = `https://api.jikan.moe/v4/anime/${id}`;
-
-
-// Funzione per iniziare a tracciare un anime
-const startTracking = () => {
-    const newAnime = {
-        id: id,
-        title: anime.value.title,
-        img: anime.value.images?.webp?.large_image_url,
-        totalEpisodes: anime.value.episodes,
-        currentEps: 0,
-    };
-
-   
-    if (myAnimeList.value.some((a) => a.id === newAnime.id)) {
-        toast.add({
-            title: 'Anime already tracked',
-            description: `${anime.value.title} is already in your list`,
-            color: 'yellow',
-        });
-        return;
-    }
-
-    // Aggiungi il nuovo anime
-    myAnimeList.value.push(newAnime);
-
-    toast.add({
-        title: 'Anime tracking with success',
-        description: `You've added ${anime.value.title} to your anime tracked list`,
-        color: 'green',
-    });
-
-    console.log('Updated myAnimeList:', myAnimeList.value);
-};
-
-
-    
-    watch(myAnimeList, () => {
-    localStorage.setItem('animeStorage', JSON.stringify(myAnimeList.value));
-}, { deep: true });
 
 
 const fetchSingleAnime = async (url) => {
