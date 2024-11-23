@@ -37,7 +37,7 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
 
     const startTracking = () => {
 
-        const myanime = ref({
+        const myAnime = ref({
             id: id,
             title: anime.value.title,
             img: anime.value.images?.webp?.large_image_url,
@@ -50,6 +50,9 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
             description: `You're added ${anime.value.title} to your anime tracked list`,
             color: 'green',
         })
+
+        const myAnimeList = ref([]);
+        myAnimeList.value.push(myAnime.value);
     }
     
 
@@ -63,8 +66,6 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
       })
     } else {
         anime.value = dataFecth.data;
-        console.log(myanime.value);
-
     }
 
 }
