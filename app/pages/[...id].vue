@@ -29,7 +29,7 @@
 const route = useRoute()
 const toast = useToast();
 const id = route.params.id;
-
+const myAnimeList = ref([]);
 let anime = ref({});
 
 const url = `https://api.jikan.moe/v4/anime/${id}`;
@@ -51,14 +51,8 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
             color: 'green',
         })
 
-        const myAnimeList = ref([]);
+       
         myAnimeList.value.push(myAnime.value);
-
-        watch(myAnimeList, () => {
-            localStorage.setItem(animeStorage, myAnimeList.value);
-        })
-    }
-    
 
     const fetchSingleAnime = async (url) => {
    const dataFecth = await $fetch(url);
