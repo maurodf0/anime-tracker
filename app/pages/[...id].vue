@@ -31,8 +31,15 @@ import {watch} from 'vue';
 const route = useRoute()
 const toast = useToast();
 const id = ref(Array.isArray(route.params.id) ? route.params.id[0] : route.params.id);
-const myAnimeList = ref([]);
 let anime = ref({});
+const myAnimeList = ref([]);
+
+onMounted(() => {
+    const storedList = localStorage.getItem('animeStorage');
+    if (storedList) {
+        myAnimeList.value = JSON.parse(storedList);
+    }
+});
 
 
 const url = `https://api.jikan.moe/v4/anime/${id}`;
@@ -40,19 +47,31 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
 
     const startTracking = () => {
 
+        const newAnime = {
+            id: id.value,
+            title: anime.value.title,
+            img: anime.value.images?.webp?.large_image_url,
+            totalEpisodes: anime.value.episodes,
+            currentEps: 0,
+    };
+
+    if (myAnimeList.value.some((a) => a.id === newAnime.id)) {
+        toast.add({
+            title: 'Anime already tracked',
+            description: `${anime.value.title} is already in your list`,
+            color: 'yellow',
+        });
+        return;
+    }
+
+
+    myAnimeList.value.push(newAnime);
         toast.add({
             title: 'Anime tracking with success',
             description: `You're added ${anime.value.title} to your anime tracked list`,
             color: 'green',
         })
-
-        myAnimeList.value.push({
-            id: id,
-            title: anime.value.title,
-            img: anime.value.images?.webp?.large_image_url,
-            totalEpisodes: anime.value.episodes,
-            currentEps: 0 }
-        );
+   
 
     }
 
@@ -77,7 +96,10 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
 
 }
 
-watch(id, () => {
-    fetchSingleAnime();
+watch(() => id.value, (newId) => {
+    if (newId) {
+        const updatedUrl = `https://api.jikan.moe/v4/anime/${newId}`;
+        fetchSingleAnime(updatedUrl);
+    }
 }, { immediate: true });
 </script>
