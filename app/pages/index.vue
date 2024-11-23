@@ -53,8 +53,7 @@ const state = ref({
     } else {
       searchResult.value = data.value.data;
       pagination.value = data.value.pagination;
-      console.log(searchResult.value);
-      console.log(pagination.value);
+   
     }
 
     } catch(error) {
