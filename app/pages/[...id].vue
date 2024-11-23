@@ -30,7 +30,7 @@ import {watch} from 'vue';
 
 const route = useRoute()
 const toast = useToast();
-const id = Array.isArray(route.params.id) ? route.params.id[0] : route.params.id;
+const id = ref(Array.isArray(route.params.id) ? route.params.id[0] : route.params.id);
 const myAnimeList = ref([]);
 let anime = ref({});
 
@@ -77,11 +77,7 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
 
 }
 
-watch( () => id, (newId) => {
-        if (newId) {
-            fetchSingleAnime(url);
-        }
-    },
-    { immediate: true }
-);
+watch(id, () => {
+    fetchSingleAnime();
+}, { immediate: true });
 </script>
