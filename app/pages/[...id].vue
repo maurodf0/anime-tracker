@@ -38,23 +38,37 @@ let anime = ref({});
 const url = `https://api.jikan.moe/v4/anime/${id}`;
 
 
-    const startTracking = () => {
+// Funzione per iniziare a tracciare un anime
+const startTracking = () => {
+    const newAnime = {
+        id: id,
+        title: anime.value.title,
+        img: anime.value.images?.webp?.large_image_url,
+        totalEpisodes: anime.value.episodes,
+        currentEps: 0,
+    };
 
+   
+    if (myAnimeList.value.some((a) => a.id === newAnime.id)) {
         toast.add({
-            title: 'Anime tracking with success',
-            description: `You're added ${anime.value.title} to your anime tracked list`,
-            color: 'green',
-        })
-
-        myAnimeList.value.push({
-            id: id,
-            title: anime.value.title,
-            img: anime.value.images?.webp?.large_image_url,
-            totalEpisodes: anime.value.episodes,
-            currentEps: 0 }
-        );
-
+            title: 'Anime already tracked',
+            description: `${anime.value.title} is already in your list`,
+            color: 'yellow',
+        });
+        return;
     }
+
+    // Aggiungi il nuovo anime
+    myAnimeList.value.push(newAnime);
+
+    toast.add({
+        title: 'Anime tracking with success',
+        description: `You've added ${anime.value.title} to your anime tracked list`,
+        color: 'green',
+    });
+
+    console.log('Updated myAnimeList:', myAnimeList.value);
+};
 
 
     
