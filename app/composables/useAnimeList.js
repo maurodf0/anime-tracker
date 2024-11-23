@@ -5,7 +5,7 @@ export const useAnimeList = () => {
 // Funzione per iniziare a tracciare un anime
 const startTracking = (anime) => {
     const newAnime = {
-        id: anime.mail_id,
+        id: anime.mal_id,
         title: anime.title,
         img: anime.images?.webp?.large_image_url,
         totalEpisodes: anime.episodes,
