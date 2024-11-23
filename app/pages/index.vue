@@ -86,7 +86,11 @@ console.log(schema.safeParse(state.value)); // Verifica se lo schema valida i da
   :state="state"
   :schema="schema"
   >
- <UFormGroup help="Search for your anime">
+ <UFormGroup 
+  help="Search for your anime"
+  :required="true"
+  name="query"
+  >
    <UInput v-model="state.query" placeholder="Naruto"></UInput>
  </UFormGroup>
  <UButton variant="solid" :loading="pending">Search</UButton>
