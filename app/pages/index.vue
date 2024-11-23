@@ -9,6 +9,10 @@
   const pending = ref(false);
   const page = ref(1);
 
+  const schema = z.object({
+      query: z.string().min(2, 'Must be at least 2 characters')
+})
+
 
   const toast = useToast()
 
@@ -62,7 +66,11 @@
 <template>
     <UContainer class="max-w-[1080px] mx-auto px-4 min-h-screen">
 
-<UForm @submit="searchAnime()">
+<UForm 
+  @submit="searchAnime()"
+  :state="state"
+  :schema="schema"
+  >
  <UFormGroup help="Search for your anime">
    <UInput v-model="query" placeholder="Naruto"></UInput>
  </UFormGroup>
