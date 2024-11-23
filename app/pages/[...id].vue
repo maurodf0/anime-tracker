@@ -53,6 +53,10 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
 
         const myAnimeList = ref([]);
         myAnimeList.value.push(myAnime.value);
+
+        watch(myAnimeList, () => {
+            localStorage.setItem(animeStorage, myAnimeList.value);
+        })
     }
     
 
