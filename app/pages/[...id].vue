@@ -30,10 +30,10 @@ import {watch} from 'vue';
 
 const route = useRoute()
 const toast = useToast();
-const id = route.params.id;
+const id = route.params.id[0];
 const myAnimeList = ref([]);
 let anime = ref({});
-const animeStorage = '';
+
 
 const url = `https://api.jikan.moe/v4/anime/${id}`;
 
@@ -59,7 +59,7 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
     }
     
     watch(myAnimeList, () => {
-    localStorage.setItem(animeStorage, JSON.stringify(myAnimeList.value));
+    localStorage.setItem('animeStorage', JSON.stringify(myAnimeList.value));
         }, { deep: true })
 
     const fetchSingleAnime = async (url) => {
