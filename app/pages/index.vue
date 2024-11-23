@@ -75,9 +75,9 @@
       <div v-for="anime in searchResult" :key="anime.mal_id">
        <UCard>
         <template #header>
-          <h3>{{ anime.title }}</h3>
+         <NuxtLink :to="anime.mal_id.toString()"><h3>{{ anime.title }}</h3></NuxtLink>
         </template>
-        <img :src="anime.images.webp.image_url">
+        <NuxtLink :to="anime.mal_id.toString()"><img :src="anime.images.webp.image_url"></NuxtLink>
         <p class="mt-4">Sinossi: {{ anime.synopsis ? anime.synopsis.substring(0, 100) : 'No synopsis available' }}</p>
         <p class="my-4 border-y py-2 border-gray-500">Date: {{anime.aired.from ? anime.aired.from.split('T')[0] : 'no data'}}</p>
         <div class="flex justify-between">
