@@ -11,7 +11,11 @@
 
   const schema = z.object({
       query: z.string().min(2, 'Must be at least 2 characters')
-})
+});
+
+const state = reactive({
+   query: undefined
+});
 
 
   const toast = useToast()
