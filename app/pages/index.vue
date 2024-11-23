@@ -26,7 +26,7 @@ const state = ref({
   })
 
   const searchAnime = async (number = 1) => {
-    console.log(state.value.query)
+    
    
 
     if (!state.value.query){
@@ -53,6 +53,10 @@ const state = ref({
     } else {
       searchResult.value = data.value.data;
       pagination.value = data.value.pagination;
+
+      console.log(state.value); // Verifica lo stato attuale
+      console.log(schema.safeParse(state.value)); // Verifica se lo schema valida i dati
+
    
     }
 
@@ -67,6 +71,10 @@ const state = ref({
   watch(page, () => {
     searchAnime(page.value);
   })
+
+  console.log(state.value); // Verifica lo stato attuale
+console.log(schema.safeParse(state.value)); // Verifica se lo schema valida i dati
+
 
 </script>
 
