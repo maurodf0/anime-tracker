@@ -59,11 +59,9 @@ const fetchSingleAnime = async (url) => {
 };
 
 
-watch( () => id, (newId) => {
-        if (newId) {
-            fetchSingleAnime(url);
-        }
-    },
-    { immediate: true }
-);
-</script>
+watch(() => id, (newId) => {
+    if (newId) {
+        const updatedUrl = `https://api.jikan.moe/v4/anime/${newId}`;
+        fetchSingleAnime(updatedUrl);
+    }
+}, { immediate: true });
