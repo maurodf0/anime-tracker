@@ -97,7 +97,11 @@ const state = ref({
   :required="true"
   name="query"
   >
-   <UInput v-model="state.query" placeholder="Naruto"></UInput>
+   <UInput 
+    v-model="state.query" 
+    placeholder="Naruto"
+    icon="i-heroicons-tv"
+    ></UInput>
  </UFormGroup>
  <UButton variant="solid" :loading="pending">Search</UButton>
 </UForm>
