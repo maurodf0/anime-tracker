@@ -1,5 +1,7 @@
 <script setup>
 
+  import { z } from 'zod'
+
   const query = ref('');
   const pagination = ref({});
   const myAnime = ref([]);
