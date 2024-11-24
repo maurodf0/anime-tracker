@@ -2,13 +2,13 @@
     <UContainer class="max-w-[1080px] mx-auto px-4 min-h-screen">
         <div 
             v-for="anime in myAnimeList" :key="anime.id"
-            class="flex justify-between border border-gray-700 rounded p-4">
-            <div class="anime-info">
+            class="flex my-4 bg-gray-900 items-center justify-between border border-gray-700 rounded p-4">
+            <div class="anime-info flex gap-4">
+            <img :src="anime.img">
            <h4> {{ anime.title }}</h4>
-           <img :src="anime.img">
            <div class="counter">
-            +
-            -
+            <UButton>+</UButton>
+            <UButton>-</UButton>
            </div>
             </div>
         </div>
@@ -27,3 +27,10 @@ onMounted(() => {
 });
 
 </script>
+
+<style scoped>
+     img {
+        max-width: 100px;
+     }
+
+</style>
