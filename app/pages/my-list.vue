@@ -5,11 +5,15 @@
             class="flex my-4 bg-gray-900 items-center justify-between border border-gray-700 rounded p-4">
             <div class="anime-info flex gap-4 items-center align-middle">
             <img :src="anime.img">
-           <h4 class="text-xl"> {{ anime.title }}</h4>
-           <h5>{{ episodesWatched }}</h5>/<h5>{{ anime.episodes }}</h5>
+            <div class="anime-data flex flex-col">
+                <h4 class="text-xl"> {{ anime.title }}</h4>
+                <div class="episodes flex">
+                    <h5>{{ anime.currentEps }}</h5>/<h5>{{ anime.totalEpisodes }}</h5>
+                </div>
+            </div>
            <div class="counter flex gap-4 items-center ">
-            <UButton>+</UButton>
-            <UButton>-</UButton>
+            <UButton @click="addEps(anime.id)">+</UButton>
+            <UButton @click="removeEps">-</UButton>
            </div>
             </div>
         </div>
@@ -26,6 +30,10 @@ onMounted(() => {
         myAnimeList.value = JSON.parse(storedList);
     }
 });
+
+    const addEps = () => {
+        myAnimeList.value.anime.currentEps++
+    }
 
 </script>
 
