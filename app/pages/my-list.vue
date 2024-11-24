@@ -1,10 +1,12 @@
 <template>
     <ul>
-        <li v-for="anime in storedList" :key="anime.id">{{ anime.title }}</li>
+        <li v-for="anime in myAnimeList" :key="anime.id">{{ anime.title }}</li>
     </ul>
 </template>
 
 <script setup>
+
+const myAnimeList = ref([]);
 
 onMounted(() => {
     const storedList = localStorage.getItem('animeStorage');
