@@ -36,7 +36,11 @@ onMounted(() => {
 
     const addEps = (anime) => {
         if(anime.currentEps == anime.totalEpisodes){
-        anime.completed.value = true
+        anime.completed = true
+        // Usa nextTick per garantire che l'aggiornamento della reattività sia riflesso nel DOM
+        nextTick(() => {
+            console.log("Anime completato:", anime.title);
+        });
         return
        }
        anime.currentEps++
@@ -49,7 +53,7 @@ onMounted(() => {
         return
        }
        anime.currentEps--
-       anime.completed.value && (anime.completed.value = false);
+       anime.completed && (anime.completed = false);
 
     }
     
