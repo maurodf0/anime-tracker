@@ -3,7 +3,7 @@
         <div 
             v-for="anime in myAnimeList" :key="anime.id"
             class="flex my-4 bg-gray-900 items-center justify-between border rounded p-4"
-            :class="completed ? 'border-green-400' : 'border-gray-700'">
+            :class="anime.completed ? 'border-green-400' : 'border-gray-700'">
             <div class="anime-info flex gap-4 items-center align-middle">
             <img :src="anime.img">
             <div class="anime-data flex flex-col">
@@ -15,6 +15,7 @@
            <div class="counter flex gap-4 items-center ">
             <UButton @click="addEps(anime)">+</UButton>
             <UButton @click="removeEps(anime)">-</UButton>
+            <a class="color-red-800" @click="removeAnime(anime)">Remove Anime</a>
            </div>
             </div>
         </div>
@@ -39,7 +40,7 @@ onMounted(() => {
         return
        }
        anime.currentEps++
-       completed.value = false;
+      
 
     }
 
@@ -49,6 +50,13 @@ onMounted(() => {
        }
        anime.currentEps--
     
+    }
+    
+    const removeAnime = (anime) => {
+        const index = myAnimeList.value.findIndex((a) => a.id === anime.id);
+        if (index > -1) { 
+            myAnimeList.value.splice(index, 1); // 2nd parameter means remove one item only
+        }
     }
 
     watch(myAnimeList, () => {
