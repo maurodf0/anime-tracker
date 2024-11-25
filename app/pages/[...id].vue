@@ -53,6 +53,7 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
             img: anime.value.images?.webp?.large_image_url,
             totalEpisodes: anime.value.episodes,
             currentEps: 0,
+            completed: false,
     };
 
     if (myAnimeList.value.some((a) => a.id === newAnime.id)) {
