@@ -36,7 +36,7 @@ onMounted(() => {
 
     const addEps = (anime) => {
         if(anime.currentEps == anime.totalEpisodes){
-        anime.completed = true
+        anime.completed.value = true
         return
        }
        anime.currentEps++
@@ -49,7 +49,7 @@ onMounted(() => {
         return
        }
        anime.currentEps--
-       anime.completed && (anime.completed = false);
+       anime.completed.value && (anime.completed.value = false);
 
     }
     

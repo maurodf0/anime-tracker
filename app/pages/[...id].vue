@@ -47,14 +47,14 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
 
     const startTracking = () => {
 
-        const newAnime = {
+        const newAnime = reactive({
             id: id.value,
             title: anime.value.title,
             img: anime.value.images?.webp?.large_image_url,
             totalEpisodes: anime.value.episodes,
             currentEps: 0,
-            completed: ref(false),
-    };
+            completed: false
+    });
 
     if (myAnimeList.value.some((a) => a.id === newAnime.id)) {
         toast.add({
