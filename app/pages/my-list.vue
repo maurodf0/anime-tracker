@@ -12,8 +12,8 @@
                 </div>
             </div>
            <div class="counter flex gap-4 items-center ">
-            <UButton @click="addEps(anime.id)">+</UButton>
-            <UButton @click="removeEps">-</UButton>
+            <UButton @click="addEps(anime)">+</UButton>
+            <UButton @click="removeEps(anime)">-</UButton>
            </div>
             </div>
         </div>
@@ -31,8 +31,15 @@ onMounted(() => {
     }
 });
 
-    const addEps = () => {
-        myAnimeList.value.anime.currentEps++
+    const addEps = (anime) => {
+       anime.currentEps++
+       if(anime.currentEps === anime.totalEps){
+        return
+       }
+    }
+
+    const removeEps = (anime) => {
+       anime.currentEps--
     }
 
 </script>
