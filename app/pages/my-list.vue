@@ -42,6 +42,11 @@ onMounted(() => {
        anime.currentEps--
     }
 
+    watch(myAnimeList, () => {
+    localStorage.setItem('animeStorage', JSON.stringify(myAnimeList.value));
+    console.log(myAnimeList.value);
+        }, { deep: true })
+
 </script>
 
 <style scoped>
