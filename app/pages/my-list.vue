@@ -24,7 +24,7 @@
 <script setup>
 
 const myAnimeList = ref([]);
-const completed = ref(false);
+
 
 onMounted(() => {
     const storedList = localStorage.getItem('animeStorage');
@@ -35,7 +35,7 @@ onMounted(() => {
 
     const addEps = (anime) => {
         if(anime.currentEps == anime.totalEpisodes){
-        completed.value = true;
+        anime.completed = true
         return
        }
        anime.currentEps++
