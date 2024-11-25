@@ -2,7 +2,8 @@
     <UContainer class="max-w-[1080px] mx-auto px-4 min-h-screen">
         <div 
             v-for="anime in myAnimeList" :key="anime.id"
-            class="flex my-4 bg-gray-900 items-center justify-between border border-gray-700 rounded p-4">
+            class="flex my-4 bg-gray-900 items-center justify-between border rounded p-4"
+            :class="completed ? 'border-green-400' : 'border-gray-700'">
             <div class="anime-info flex gap-4 items-center align-middle">
             <img :src="anime.img">
             <div class="anime-data flex flex-col">
@@ -23,6 +24,7 @@
 <script setup>
 
 const myAnimeList = ref([]);
+const completed = ref(false);
 
 onMounted(() => {
     const storedList = localStorage.getItem('animeStorage');
@@ -32,11 +34,12 @@ onMounted(() => {
 });
 
     const addEps = (anime) => {
-        if(anime.currentEps >= anime.totalEpisodes){
+        if(anime.currentEps == anime.totalEpisodes){
+        completed.value = true;
         return
        }
        anime.currentEps++
-       console.log(anime.currentEps, anime.totalEpisodes);
+       completed.value = false;
 
     }
 
