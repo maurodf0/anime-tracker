@@ -1,30 +1,53 @@
 <template>
-    <UContainer class="max-w-[1080px] mx-auto px-4 min-h-screen">
-        <div 
-            v-for="anime in myAnimeList" :key="anime.id"
-            class="flex my-4 bg-gray-900 items-center justify-between border rounded p-4"
-            :class="anime.completed ? 'border-green-400' : 'border-gray-700'">
-            <div class="anime-info flex gap-4 items-center align-middle">
-            <img :src="anime.img">
-            <div class="anime-data flex flex-col">
-                <h4 class="text-xl"> {{ anime.title }}</h4>
-                <div class="episodes flex">
-                    <h5>{{ anime.currentEps }}</h5>/<h5>{{ anime.totalEpisodes }}</h5>
-                </div>
+    <UContainer class="max-w-screen-xl mx-auto px-4 min-h-screen">
+      <div
+        v-for="anime in myAnimeList"
+        :key="anime.id"
+        class="flex flex-col md:flex-row bg-gray-900 border rounded-lg p-4 mb-4 transition-all duration-300 ease-in-out"
+        :class="anime.completed ? 'border-green-400' : 'border-gray-700'">
+        
+        <!-- Sezione Immagine -->
+        <div class="anime-info flex gap-4 items-center mb-4 md:mb-0">
+          <img :src="anime.img" class="w-24 h-24 rounded-lg object-cover" />
+          
+          <!-- Dati Anime -->
+          <div class="anime-data flex flex-col justify-center">
+            <h4 class="text-xl font-semibold text-white">{{ anime.title }}</h4>
+            <div class="episodes flex text-sm text-gray-400 mt-2">
+              <h5>{{ anime.currentEps }} / {{ anime.totalEpisodes }}</h5>
             </div>
-           <div class="counter flex gap-4 items-center ">
-            <UButton @click="addEps(anime)">+</UButton>
-            <UButton @click="removeEps(anime)">-</UButton>
-            <a class="color-red-800" @click="removeAnime(anime)">Remove Anime</a>
-           </div>
-            </div>
+          </div>
         </div>
+        
+        <!-- Controlli -->
+        <div class="counter flex gap-4 items-center mt-4 md:mt-0">
+          <UButton 
+            @click="addEps(anime)" 
+            variant="solid" 
+            class="px-3 py-1 text-sm bg-blue-500 hover:bg-blue-600 rounded-md transition duration-200">
+            +
+          </UButton>
+          <UButton 
+            @click="removeEps(anime)" 
+            variant="solid" 
+            class="px-3 py-1 text-sm bg-red-500 hover:bg-red-600 rounded-md transition duration-200">
+            -
+          </UButton>
+          <a 
+            @click="removeAnime(anime)" 
+            class="text-red-800 hover:text-red-600 text-sm cursor-pointer">
+            Remove Anime
+          </a>
+        </div>
+      </div>
     </UContainer>
-</template>
+  </template>
 
 <script setup>
+import party from "party-js";
 
 const myAnimeList = ref([]);
+const toast = useToast();
 
 
 onMounted(() => {
@@ -37,10 +60,13 @@ onMounted(() => {
     const addEps = (anime) => {
         if(anime.currentEps == anime.totalEpisodes){
         anime.completed = true
-        // Usa nextTick per garantire che l'aggiornamento della reattività sia riflesso nel DOM
-        nextTick(() => {
-            console.log("Anime completato:", anime.title);
+        toast.add({
+            title: 'Anime completed with success, congratulation!'
+        })
+        party.confetti(runButton.value, {
+        count: party.variation.range(100, 200),
         });
+
         return
        }
        anime.currentEps++
@@ -62,6 +88,9 @@ onMounted(() => {
         if (index > -1) { 
             myAnimeList.value.splice(index, 1); // 2nd parameter means remove one item only
         }
+        toast.add({
+            title: 'Anime removed with success'
+        })
     }
 
     watch(myAnimeList, () => {
