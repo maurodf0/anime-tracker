@@ -3,7 +3,7 @@
       <div
         v-for="anime in myAnimeList"
         :key="anime.id"
-        class="flex flex-col md:flex-row bg-gray-900 border rounded-lg p-4 mb-4 transition-all duration-300 ease-in-out"
+        class="flex flex-col md:flex-row bg-gray-900 border rounded-lg p-4 mb-4 transition-all duration-300 ease-in-out items-center justify-between"
         :class="anime.completed ? 'border-green-400' : 'border-gray-700'">
         
         <!-- Sezione Immagine -->
@@ -20,7 +20,7 @@
         </div>
         
         <!-- Controlli -->
-        <div class="counter flex gap-4 items-center mt-4 md:mt-0">
+        <div class="counter flex gap-4 items-center ">
           <UButton 
             @click="addEps(anime)" 
             variant="solid" 
@@ -33,12 +33,13 @@
             class="px-3 py-1 text-sm bg-red-500 hover:bg-red-600 rounded-md transition duration-200">
             -
           </UButton>
-          <a 
+          
+        </div>
+        <a 
             @click="removeAnime(anime)" 
-            class="text-red-800 hover:text-red-600 text-sm cursor-pointer">
+            class="text-red-600 hover:text-red-400 text-sm cursor-pointer float-end text-right max-[680px]:my-4">
             Remove Anime
           </a>
-        </div>
       </div>
     </UContainer>
   </template>
@@ -47,7 +48,7 @@
 import party from "party-js";
 
 const myAnimeList = ref([]);
-const toast = useToast();
+const toast = useToast()
 
 
 onMounted(() => {
@@ -61,12 +62,10 @@ onMounted(() => {
         if(anime.currentEps == anime.totalEpisodes){
         anime.completed = true
         toast.add({
-            title: 'Anime completed with success, congratulation!'
-        })
-        party.confetti(runButton.value, {
-        count: party.variation.range(100, 200),
-        });
-
+            title: 'You must insert data for search',
+            description: 'Write your anime before start searching',
+            color: 'red'
+      })
         return
        }
        anime.currentEps++
@@ -89,7 +88,8 @@ onMounted(() => {
             myAnimeList.value.splice(index, 1); // 2nd parameter means remove one item only
         }
         toast.add({
-            title: 'Anime removed with success'
+            title: `${anime.title} removed with success!`,
+            color: 'green'
         })
     }
 
