@@ -49,7 +49,8 @@ onMounted(() => {
         return
        }
        anime.currentEps--
-       anime.completed = false;
+       anime.completed && (anime.completed = false);
+
     }
     
     const removeAnime = (anime) => {
