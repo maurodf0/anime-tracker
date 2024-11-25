@@ -32,14 +32,20 @@ onMounted(() => {
 });
 
     const addEps = (anime) => {
-       anime.currentEps++
-       if(anime.currentEps === anime.totalEps){
+        if(anime.currentEps >= anime.totalEpisodes){
         return
        }
+       anime.currentEps++
+       console.log(anime.currentEps, anime.totalEpisodes);
+
     }
 
     const removeEps = (anime) => {
+        if(anime.currentEps <= 0){
+        return
+       }
        anime.currentEps--
+    
     }
 
     watch(myAnimeList, () => {
