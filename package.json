@@ -17,5 +17,8 @@
     "vue": "latest",
     "vue-router": "latest",
     "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "vite-plugin-pwa": "^0.21.0"
   }
 }
