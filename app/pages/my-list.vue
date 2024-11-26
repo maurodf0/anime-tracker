@@ -51,10 +51,13 @@ const toast = useToast()
 
 
 onMounted(() => {
+  nextTick ( () => {
     const storedList = localStorage.getItem('animeStorage');
     if (storedList) {
         myAnimeList.value = JSON.parse(storedList);
     }
+  })
+   
 });
 
     const addEps = (anime) => {
