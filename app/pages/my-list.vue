@@ -45,7 +45,6 @@
   </template>
 
 <script setup>
-import party from "party-js";
 
 const myAnimeList = ref([]);
 const toast = useToast()
