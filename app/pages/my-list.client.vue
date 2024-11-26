@@ -46,12 +46,22 @@
 
 <script setup>
 
-const myAnimeList = ref(
-  JSON.parse(localStorage.getItem('animeStorage')) || []
-);
+import { nextTick } from 'vue';
+
+const myAnimeList = ref([]);
 const toast = useToast()
 
 
+onMounted(() => {
+  nextTick ( () => {
+    const storedList = localStorage.getItem('animeStorage');
+    if (storedList) {
+        myAnimeList.value = JSON.parse(storedList);
+        console.log(myAnimeList.value);
+    }
+  })
+   
+});
 
     const addEps = (anime) => {
         if(anime.currentEps == anime.totalEpisodes){
@@ -90,7 +100,6 @@ const toast = useToast()
 
     watch(myAnimeList, () => {
     localStorage.setItem('animeStorage', JSON.stringify(myAnimeList.value));
-    console.log(myAnimeList.value);
         }, { deep: true })
 
 </script>
