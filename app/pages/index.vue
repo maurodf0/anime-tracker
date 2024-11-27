@@ -85,6 +85,7 @@ const state = ref({
 </script>
 
 <template>
+  <div class="wrapper">
   <UContainer class="max-w-[1080px] mx-auto px-4 min-h-screen">
 
     <!-- Form di Ricerca -->
@@ -154,7 +155,7 @@ const state = ref({
           :first-button="{ icon: 'i-heroicons-arrow-small-left-20-solid', label: 'First', color: 'neutral' }"
           :last-button="{ icon: 'i-heroicons-arrow-small-right-20-solid', trailing: true, label: 'Last', color: 'neutral' }"
           class="my-4 mx-auto"
-          :class="{'opacity-50': pending.value}"
+        
         />
       </div>
 
@@ -169,4 +170,5 @@ const state = ref({
     <UNotifications />
     
   </UContainer>
+  </div>
 </template>
