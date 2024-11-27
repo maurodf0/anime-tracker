@@ -1,5 +1,5 @@
 <template>
-  <Fragment>
+  <div>
       <UContainer class="max-w-[1080px] mx-auto px-4 min-h-screen">
         <article>
           <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
@@ -47,7 +47,7 @@
       </UContainer>
     
       <UNotifications />
-    </Fragment>
+    </div>
   </template>
   
 
