@@ -1,5 +1,5 @@
 <template>
-    <UContainer class="max-w-screen-xl mx-auto px-4 min-h-screen">
+    <UContainer class="max-w-[1080px] mx-auto px-4 min-h-screen">
       <div v-if="myAnimeList.length">
         <div
           v-for="anime in myAnimeList"
@@ -8,7 +8,7 @@
           :class="anime.completed ? 'border-green-400' : 'border-gray-700'">
           
           <!-- Sezione Immagine -->
-          <div class="anime-info flex flex-col md:flex-row mx-auto text-center md:text-left md:mx-2 gap-4 items-center mb-4 md:mb-0">
+          <div class="anime-info flex basis-4/12 flex-col md:flex-row mx-auto text-center md:text-left md:mx-2 gap-4 items-center mb-4 md:mb-0">
             <img :src="anime.img" class="w-24 h-24 rounded-lg object-cover" />
             
             <!-- Dati Anime -->
