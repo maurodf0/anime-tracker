@@ -45,7 +45,6 @@
       </div>
 
       <div class="text-gray-400 text-center" v-else>
-        <div class="tenor-gif-embed" data-postid="8821627203111399038" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/squishiverse-squishie-blob-slime-crying-gif-8821627203111399038">Squishiverse Squishie GIF</a>from <a href="https://tenor.com/search/squishiverse-gifs">Squishiverse GIFs</a></div>
         There's nothing here, <NuxtLink class="underline" to="/">add anime to your list</NuxtLink></div>
     </UContainer>
   </template>
