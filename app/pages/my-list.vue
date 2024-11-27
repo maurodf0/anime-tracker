@@ -8,13 +8,13 @@
           :class="anime.completed ? 'border-green-400' : 'border-gray-700'">
           
           <!-- Sezione Immagine -->
-          <div class="anime-info flex md:flex-col lg:flex-row gap-4 items-center mb-4 md:mb-0">
+          <div class="anime-info flex flex-col md:flex-row mx-auto text-center md:text-left md:mx-2 gap-4 items-center mb-4 md:mb-0">
             <img :src="anime.img" class="w-24 h-24 rounded-lg object-cover" />
             
             <!-- Dati Anime -->
             <div class="anime-data flex flex-col justify-center">
               <h4 class="text-xl font-semibold text-white">{{ anime.title }}</h4>
-              <div class="episodes flex text-sm text-gray-400 mt-2">
+              <div class="episodes flex mx-auto md:mx-0 text-sm text-gray-400 mt-2">
                 <h5>{{ anime.currentEps }} / {{ anime.totalEpisodes }}</h5>
               </div>
             </div>
