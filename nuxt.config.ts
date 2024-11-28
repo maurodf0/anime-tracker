@@ -32,6 +32,9 @@ export default defineNuxtConfig({
           type: 'image/png'
         }
       ]
+    },
+    workbox: {
+     navigateFallback: '/',
     }
   }
 })
