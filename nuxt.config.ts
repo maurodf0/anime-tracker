@@ -28,6 +28,6 @@ export default defineNuxtConfig({
       enabled: true,
       type: 'module',
 
-    }
+    },
   }
 })
