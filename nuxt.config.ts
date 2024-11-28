@@ -8,5 +8,5 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
   },
-  modules: ['@nuxt/ui', '@nuxtjs/tailwindcss', '@formkit/auto-animate/nuxt']
+  modules: ['@nuxt/ui', '@nuxtjs/tailwindcss', '@formkit/auto-animate/nuxt', '@nuxtjs/pwa']
 })
