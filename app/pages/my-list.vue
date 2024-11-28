@@ -68,7 +68,7 @@ onMounted(() => {
     const storedList = localStorage.getItem('animeStorage');
     if (storedList) {
         myAnimeList.value = JSON.parse(storedList);
-        console.log(myAnimeList.value);
+     
     }
   })
    
