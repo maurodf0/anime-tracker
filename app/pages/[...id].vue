@@ -53,6 +53,7 @@
 
 <script setup>
 
+
 import {Fragment, watch} from 'vue';
 
 const route = useRoute()
@@ -130,4 +131,12 @@ watch(() => id.value, (newId) => {
         fetchSingleAnime(updatedUrl);
     }
 }, { immediate: true });
+
+
+
+useSeoMeta({
+  title: `AnimeTracker: Anime Detail Page`,
+  description: 'AnimeTracker: The App for Track your animes, choose every anime you are watching and start tracking it',
+
+})
 </script>

@@ -1,5 +1,12 @@
 <script setup>
 
+useSeoMeta({
+  title: 'AnimeTracker: The App for Track your animes',
+  ogTitle: 'AnimeTracker: The App for Track your animes',
+  description: 'AnimeTracker: The App for Track your animes, choose every anime you are watching and start tracking it',
+  ogDescription: 'AnimeTracker: The App for Track your animes, choose every anime you are watching and start tracking it.',
+})
+
   import { z } from 'zod'
 
   const pagination = ref({});
