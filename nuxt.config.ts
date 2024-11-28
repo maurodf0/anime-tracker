@@ -19,19 +19,7 @@ export default defineNuxtConfig({
       name: 'AnimeTracker',
       short_name: 'AnimeTracker',
       description: 'AnimeTracker: The App for Track your animes, choose every anime you are watching and start tracking it',
-      theme_color: '#333',
-      icons: [
-        {
-          src: '/icon-192x192.png',
-          sizes: '192x192',
-          type: 'image/png'
-        },
-        {
-          src: '/icon-512x512.png',
-          sizes: '512x512',
-          type: 'image/png'
-        }
-      ]
+
     },
     workbox: {
      navigateFallback: '/',
