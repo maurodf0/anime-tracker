@@ -8,9 +8,9 @@
           class="w-full bg-neutral-800 text-neutral-100 border-neutral-600 focus:ring-indigo-500"
         />
         </UFormGroup>
-      <div v-if="myAnimeList.length" class="lg:grid lg:grid-cols-2 gap-4">
+      <div v-if="filteredAnime.length" class="lg:grid lg:grid-cols-2 gap-4">
         <div
-          v-for="anime in myAnimeList"
+          v-for="anime in filteredAnime"
           :key="anime.id"
           class="flex flex-col md:flex-row bg-gray-900 border rounded-lg p-4 mb-4 transition-all duration-300 ease-in-out items-center justify-between"
           :class="anime.completed ? 'border-green-400' : 'border-gray-700'">
@@ -68,6 +68,7 @@ useSeoMeta({
 
 
 const myAnimeList = ref([]);
+const search = ref('');
 const toast = useToast()
 
 
@@ -79,6 +80,12 @@ onMounted(() => {
      
     }
   })
+
+  const filteredAnime = computed(() => {
+    return myAnimeList.value.filter((r) =>
+      r.title.toLocaleLowerCase().includes(search.value.toLocaleLowerCase())
+    );
+  });
    
 });
 
