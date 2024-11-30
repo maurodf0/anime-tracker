@@ -1,12 +1,13 @@
 <template>
     <UContainer class="max-w-[1080px] mx-auto px-4 min-h-screen">
-      <UFormGroup class="w-full" name="search">
+      <UFormGroup class="w-full mb-4" name="search">
         <UInput 
           v-model="search" 
           placeholder="Search for anime..."
           icon="i-heroicons-tv"
           class="w-full bg-neutral-800 text-neutral-100 border-neutral-600 focus:ring-indigo-500"
         />
+        </UFormGroup>
       <div v-if="myAnimeList.length" class="lg:grid lg:grid-cols-2 gap-4">
         <div
           v-for="anime in myAnimeList"
