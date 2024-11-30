@@ -44,6 +44,7 @@
         <UButton class="my-8" @click="startTracking" variant="solid">
           Start Tracking
         </UButton>
+        
       </UContainer>
     
       <UNotifications />
