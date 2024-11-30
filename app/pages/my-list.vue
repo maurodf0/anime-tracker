@@ -81,13 +81,15 @@ onMounted(() => {
     }
   })
 
-  const filteredAnime = computed(() => {
+   
+});
+
+
+const filteredAnime = computed(() => {
     return myAnimeList.value.filter((r) =>
       r.title.toLocaleLowerCase().includes(search.value.toLocaleLowerCase())
     );
   });
-   
-});
 
     const addEps = (anime) => {
         if(anime.currentEps == anime.totalEpisodes){
