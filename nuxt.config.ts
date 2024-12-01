@@ -6,8 +6,13 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
-  },
+    pageTransition: { name: 'page', mode: 'out-in' },
+  head: {
+        link: [
+          { rel: 'manifest', href: '/manifest.webmanifest' },
+        ],
+      },
+    },
   modules: [
     '@nuxt/ui',
     '@nuxtjs/tailwindcss',
@@ -37,7 +42,8 @@ export default defineNuxtConfig({
       ]
     },
     workbox: {
-      navigateFallback: '/',
+      globPatterns: ['**/*.{js,css,html,png,svg,webmanifest}'],
+      globIgnores: ['**/node_modules/**/*', '**/@fs/**/*'], // Escludi node_modules e percorsi @fs
     },
     devOptions: {
       enabled: true,
