@@ -11,15 +11,15 @@ export default function useTracking() {
     const myAnimeList = ref([]);
     const startTracking = (anime) => {
         
-
+        console.log(anime);
         const newAnime = reactive({
-            console.log(anime.value);
-            id: anime.value.mal_id,
-            title: anime.value.title,
-            img: anime.value.images?.webp?.large_image_url,
-            totalEpisodes: anime.value.episodes,
+         
+            id: anime.mal_id,
+            title: anime.title,
+            img: anime.images?.webp?.large_image_url,
+            totalEpisodes: anime.episodes,
             currentEps: 0,
-            completed: false
+            completed: ref(false),
     });
 
     if (myAnimeList.value.some((a) => a.id === newAnime.id)) {
