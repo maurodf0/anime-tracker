@@ -1,4 +1,5 @@
-import { ref } from 'vue'   
+import { ref } from 'vue'  
+const toast = useToast(); 
 
 onMounted(() => {
     const storedList = localStorage.getItem('animeStorage');
