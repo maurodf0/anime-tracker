@@ -70,12 +70,6 @@ const url = `https://api.jikan.moe/v4/anime/${id}`;
 
 
 
-    
-    watch(myAnimeList, () => {
-    localStorage.setItem('animeStorage', JSON.stringify(myAnimeList.value));
-    console.log(myAnimeList.value);
-        }, { deep: true })
-
     const fetchSingleAnime = async (url) => {
    const dataFecth = await $fetch(url);
 

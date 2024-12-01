@@ -1,14 +1,15 @@
-import { ref } from 'vue'  
-const toast = useToast(); 
-
-onMounted(() => {
-    const storedList = localStorage.getItem('animeStorage');
-    if (storedList) {
-        myAnimeList.value = JSON.parse(storedList);
-    }
-});
+import { ref, watch, reactive, onMounted } from 'vue';
 
 export default function useTracking() {
+
+    onMounted(() => {
+        const storedList = localStorage.getItem('animeStorage');
+        if (storedList) {
+            myAnimeList.value = JSON.parse(storedList);
+        }
+    });
+
+    const toast = useToast(); 
     const myAnimeList = ref([]);
     const startTracking = (anime) => {
         
@@ -26,7 +27,7 @@ export default function useTracking() {
     if (myAnimeList.value.some((a) => a.id === newAnime.id)) {
         toast.add({
             title: 'Anime already tracked',
-            description: `${anime.value.title} is already in your list`,
+            description: `${anime.title} is already in your list`,
             color: 'yellow',
         });
         return;
@@ -36,12 +37,18 @@ export default function useTracking() {
     myAnimeList.value.push(newAnime);
         toast.add({
             title: 'Anime tracking with success',
-            description: `You're added ${anime.value.title} to your anime tracked list`,
+            description: `You're added ${anime.title} to your anime tracked list`,
             color: 'green',
         })
    
 
     }
+
+    watch(myAnimeList, () => {
+        localStorage.setItem('animeStorage', JSON.stringify(myAnimeList.value));
+        console.log(myAnimeList.value);
+            }, { deep: true })
+    
 
     return {
         startTracking,

@@ -61,7 +61,6 @@
 
 useSeoMeta({
   title: 'AnimeTracker: My Anime List',
-
   description: 'AnimeTracker: The App for Track your animes, choose every anime you are watching and start tracking it',
 
 })
