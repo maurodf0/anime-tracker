@@ -69,19 +69,7 @@ useSeoMeta({
 const myAnimeList = ref([]);
 const search = ref('');
 const toast = useToast()
-
-
-onMounted(() => {
-  nextTick ( () => {
-    const storedList = localStorage.getItem('animeStorage');
-    if (storedList) {
-        myAnimeList.value = JSON.parse(storedList);
-     
-    }
-  })
-
-   
-});
+const { myAnimeList } = useTracking();
 
 
 const filteredAnime = computed(() => {
