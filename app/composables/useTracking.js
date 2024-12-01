@@ -12,8 +12,6 @@ export default function useTracking() {
     const toast = useToast(); 
     const myAnimeList = ref([]);
     const startTracking = (anime) => {
-        
-        console.log(anime);
         const newAnime = reactive({
          
             id: anime.mal_id,
@@ -46,7 +44,7 @@ export default function useTracking() {
 
     watch(myAnimeList, () => {
         localStorage.setItem('animeStorage', JSON.stringify(myAnimeList.value));
-        console.log(myAnimeList.value);
+       
             }, { deep: true })
     
 
