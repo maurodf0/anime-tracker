@@ -1,5 +1,7 @@
 <script setup>
 
+const { startTracking } = useTracking();
+
 useSeoMeta({
   title: 'AnimeTracker: The App for Track your animes',
   ogTitle: 'AnimeTracker: The App for Track your animes',
@@ -143,11 +145,18 @@ const state = ref({
                 <p class="text-sm">Episodes: {{ anime.episodes == 1 ? 'Film' : anime.episodes }}</p>
                 <p :class="anime.score > 6 ? 'text-green-500' : 'text-red-500'" class="font-semibold">{{ anime.score }}</p>
               </div>
+              <div class="flex justify-between md:justify-center md:flex-c ">
               <NuxtLink :to="anime.mal_id.toString()">
-                <UButton class="text-center mx-auto mt-4 flex justify-center w-full bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-800 rounded-lg py-2">
+                <UButton class="text-center mx-auto mt-4 flex w-full bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-800 rounded-lg py-2">
                 Discover More
                 </UButton>
-             </NuxtLink>
+              </NuxtLink>
+               
+                <UButton @click="startTracking(anime)" class="text-center mx-auto mt-4 flex justify-center w-full bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-800 rounded-lg py-2">
+               Start Tracking
+                </UButton>
+              </div>
+           
             </div>
           </UCard>
         </div>
