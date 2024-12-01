@@ -41,7 +41,7 @@
     
         </article>
     
-        <UButton class="my-8" @click="startTracking" variant="solid">
+        <UButton class="my-8" @click="startTracking(anime)" variant="solid">
           Start Tracking
         </UButton>
       </UContainer>
@@ -60,49 +60,14 @@ const route = useRoute()
 const toast = useToast();
 const id = ref(Array.isArray(route.params.id) ? route.params.id[0] : route.params.id);
 let anime = ref({});
-const myAnimeList = ref([]);
+const { startTracking, myAnimeList } = useTracking()
 
-onMounted(() => {
-    const storedList = localStorage.getItem('animeStorage');
-    if (storedList) {
-        myAnimeList.value = JSON.parse(storedList);
-    }
-});
+
 
 
 const url = `https://api.jikan.moe/v4/anime/${id}`;
 
 
-    const startTracking = () => {
-
-        const newAnime = reactive({
-            id: id.value,
-            title: anime.value.title,
-            img: anime.value.images?.webp?.large_image_url,
-            totalEpisodes: anime.value.episodes,
-            currentEps: 0,
-            completed: false
-    });
-
-    if (myAnimeList.value.some((a) => a.id === newAnime.id)) {
-        toast.add({
-            title: 'Anime already tracked',
-            description: `${anime.value.title} is already in your list`,
-            color: 'yellow',
-        });
-        return;
-    }
-
-
-    myAnimeList.value.push(newAnime);
-        toast.add({
-            title: 'Anime tracking with success',
-            description: `You're added ${anime.value.title} to your anime tracked list`,
-            color: 'green',
-        })
-   
-
-    }
 
 
     
