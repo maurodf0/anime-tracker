@@ -66,7 +66,7 @@ useSeoMeta({
 })
 
 
-const myAnimeList = ref([]);
+
 const search = ref('');
 const toast = useToast()
 const { myAnimeList } = useTracking();
