@@ -8,7 +8,7 @@
           class="w-full bg-neutral-800 text-neutral-100 border-neutral-600 focus:ring-indigo-500"
         />
         </UFormGroup>
-        <MyAnimeList items="filteredAnime"/>
+        <AnimeTracked :items="filteredAnime"/>
     </UContainer>
   </template>
 

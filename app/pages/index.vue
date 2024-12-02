@@ -1,6 +1,6 @@
 <script setup>
 
-const { startTracking } = useTracking();
+const { startTracking, myAnimeList } = useTracking();
 
 useSeoMeta({
   title: 'AnimeTracker: The App for Track your animes',
@@ -183,6 +183,10 @@ const state = ref({
     <div v-else>
       <p class="text-center text-neutral-500">No anime found. Please try again with a different search.</p>
     </div>
+
+    <h2>Anime Tracked</h2>
+    <AnimeTracked :items="myAnimeList"/>
+   
 
     <!-- Notifiche -->
     <UNotifications />

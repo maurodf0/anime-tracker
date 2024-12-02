@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div v-if="items.length" class="lg:grid lg:grid-cols-2 gap-4">
+        <div v-if="animeItems.length" class="lg:grid lg:grid-cols-2 gap-4">
         <div
-          v-for="anime in items"
+          v-for="anime in animeItems"
           :key="anime.id"
           class="flex flex-col md:flex-row bg-gray-900 border rounded-lg p-4 mb-4 transition-all duration-300 ease-in-out items-center justify-between"
           :class="anime.completed ? 'border-green-400' : 'border-gray-700'">
@@ -54,8 +54,16 @@
 <script setup>
 
 defineProps({
-    items: Array
+    items: Array,
+    limit: {
+        type: Number,
+        default: null
+    }
 })
+
+const animeItems = computed(() => {
+  return limit !== null ? items.slice(0, limit) : items;
+});
 
 const toast = useToast()
 const { myAnimeList } = useTracking();
