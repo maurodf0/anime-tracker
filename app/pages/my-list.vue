@@ -53,7 +53,8 @@
       </div>
 
       <div class="text-gray-400 text-center" v-else>
-        There's nothing here, <NuxtLink class="underline" to="/">add anime to your list</NuxtLink></div>
+        There's nothing here, <NuxtLink class="underline" to="/">add anime to your list</NuxtLink>
+      </div>
     </UContainer>
   </template>
 
