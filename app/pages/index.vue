@@ -13,8 +13,10 @@ useSeoMeta({
 <template>
   <div class="wrapper">
   <UContainer class="max-w-[1080px] mx-auto px-4 min-h-screen">
-
+    
+  <KeepAlive>
     <AnimeSearch />
+  </KeepAlive>
 
     <h2 class="py-4">Anime Tracked</h2>
     <AnimeTracked :items="myAnimeList" :limit="4"/>
