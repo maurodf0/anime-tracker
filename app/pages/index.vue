@@ -122,7 +122,7 @@ const state = ref({
     <h2 class="text-4xl font-semibold my-4">Anime List</h2>
 
     <!-- Risultati della Ricerca -->
-    <div v-if="searchResult.length" class="min-h-[50%]">
+    <div v-if="searchResult.length" class="min-h-[50%] overflow-y-auto max-h-[80vh]">
       <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div v-for="anime in searchResult" :key="anime.mal_id">
           <UCard class="bg-neutral-900 text-neutral-100 shadow-lg rounded-lg overflow-hidden">
@@ -180,11 +180,11 @@ const state = ref({
     </div>
 
     <!-- Messaggio quando non ci sono risultati -->
-    <div v-else class="min-h-[50%]">
+    <div v-else class="py-20">
       <p class="text-center text-neutral-500">No anime found. Please try again with a different search.</p>
     </div>
 
-    <h2>Anime Tracked</h2>
+    <h2 class="py-4">Anime Tracked</h2>
     <AnimeTracked :items="myAnimeList" :limit="4"/>
    
 
