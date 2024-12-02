@@ -1,5 +1,6 @@
 <template>
-     <div v-if="items.length" class="lg:grid lg:grid-cols-2 gap-4">
+    <div>
+        <div v-if="items.length" class="lg:grid lg:grid-cols-2 gap-4">
         <div
           v-for="anime in items"
           :key="anime.id"
@@ -46,6 +47,8 @@
       <div class="text-gray-400 text-center" v-else>
         There's nothing here, <NuxtLink class="underline" to="/">add anime to your list</NuxtLink>
       </div>
+
+    </div>
 </template>
 
 <script setup>
