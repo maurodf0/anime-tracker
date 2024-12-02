@@ -68,8 +68,6 @@ const addEps = (anime) => {
         return
        }
        anime.currentEps++
-      
-
     }
 
     const removeEps = (anime) => {
