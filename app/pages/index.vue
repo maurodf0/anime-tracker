@@ -185,7 +185,7 @@ const state = ref({
     </div>
 
     <h2>Anime Tracked</h2>
-    <AnimeTracked :items="myAnimeList"/>
+    <AnimeTracked :items="myAnimeList" :limit="4"/>
    
 
     <!-- Notifiche -->
