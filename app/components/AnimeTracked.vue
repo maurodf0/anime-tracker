@@ -48,6 +48,14 @@
         There's nothing here, <NuxtLink class="underline" to="/">add anime to your list</NuxtLink>
       </div>
 
+      <div v-if="limit">
+       <NuxtLink to="/my-list"> 
+        <UButton class="text-center mx-auto mt-4 flex w-full justify-center bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-800 rounded-lg py-2">
+          Show All
+        </UButton>  
+      </NuxtLink>
+      </div>
+
     </div>
 </template>
 
