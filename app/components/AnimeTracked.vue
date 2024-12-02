@@ -53,7 +53,7 @@
 
 <script setup>
 
-defineProps({
+const props =defineProps({
     items: Array,
     limit: {
         type: Number,
@@ -62,7 +62,7 @@ defineProps({
 })
 
 const animeItems = computed(() => {
-  return limit !== null ? items.slice(0, limit) : items;
+  return props.limit !== null ? props.items.slice(0, props.limit) : props.items;
 });
 
 const toast = useToast()
