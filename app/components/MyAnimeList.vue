@@ -1,7 +1,7 @@
 <template>
-     <div v-if="filteredAnime.length" class="lg:grid lg:grid-cols-2 gap-4">
+     <div v-if="items.length" class="lg:grid lg:grid-cols-2 gap-4">
         <div
-          v-for="anime in filteredAnime"
+          v-for="anime in items"
           :key="anime.id"
           class="flex flex-col md:flex-row bg-gray-900 border rounded-lg p-4 mb-4 transition-all duration-300 ease-in-out items-center justify-between"
           :class="anime.completed ? 'border-green-400' : 'border-gray-700'">
@@ -49,6 +49,10 @@
 </template>
 
 <script setup>
+
+defineProps({
+    items: Array
+})
 
 const toast = useToast()
 const { myAnimeList } = useTracking();
