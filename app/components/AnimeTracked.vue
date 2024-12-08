@@ -76,12 +76,14 @@ const toast = useToast()
 const { myAnimeList } = useTracking();
 
 const addEps = (anime) => {
+  if(anime.completed){
+    return
+   }
        anime.currentEps++
         if(anime.currentEps == anime.totalEpisodes){
         anime.completed = true
         toast.add({
             title: 'Congratulation, you completed this anime!',
-
             color: 'green'
       })
         return
