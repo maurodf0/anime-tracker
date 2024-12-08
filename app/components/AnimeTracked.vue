@@ -76,6 +76,7 @@ const toast = useToast()
 const { myAnimeList } = useTracking();
 
 const addEps = (anime) => {
+       anime.currentEps++
         if(anime.currentEps == anime.totalEpisodes){
         anime.completed = true
         toast.add({
@@ -85,7 +86,6 @@ const addEps = (anime) => {
       })
         return
        }
-       anime.currentEps++
     }
 
     const removeEps = (anime) => {
