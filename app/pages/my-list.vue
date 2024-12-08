@@ -38,13 +38,6 @@ const filteredAnime = computed(() => {
        
 </script>
 
-<style scoped>
-     img {
-        max-width: 100px;
-        aspect-ratio: 1/1;
-     }
-
-</style>
 
 
 
