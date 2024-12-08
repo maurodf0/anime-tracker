@@ -115,3 +115,17 @@ const addEps = (anime) => {
         }, { deep: true })
 
 </script>
+
+<style scoped>
+.completed:after {
+  content: 'COMPLETED';
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  font-size: 28px;
+  z-index: 0;
+  opacity: 0.75;
+  color:black;
+  font-weight: bold;
+}
+</style>
