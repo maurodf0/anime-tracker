@@ -32,9 +32,6 @@ const filteredAnime = computed(() => {
       r.title.toLocaleLowerCase().includes(search.value.toLocaleLowerCase())
     );
   });
-
-
-
        
 </script>
 

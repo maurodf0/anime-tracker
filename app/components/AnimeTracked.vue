@@ -15,7 +15,7 @@
             <div class="anime-data flex flex-col justify-center">
               <h4 class="text-xl font-semibold text-white">{{ anime.title }}</h4>
               <div class="episodes flex mx-auto md:mx-0 text-sm text-gray-400 mt-2">
-                <h5>{{ anime.currentEps }} / {{ anime.totalEpisodes }}</h5>
+                <h5 @click="isOpen = !isOpen">{{ anime.currentEps }} / {{ anime.totalEpisodes }}</h5>
               </div>
             </div>
           </div>
@@ -55,10 +55,18 @@
       </NuxtLink>
       </div>
 
+      <UModal v-model="isOpen">
+      <div class="p-4">
+        <Placeholder class="h-48" />
+      </div>
+    </UModal>
+
     </div>
 </template>
 
 <script setup>
+
+  const isOpen = ref(false);  
 
 const props =defineProps({
     items: Array,
