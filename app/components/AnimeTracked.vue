@@ -5,7 +5,7 @@
           v-for="anime in animeItems"
           :key="anime.id"
           class="flex flex-col md:flex-row bg-gray-900 border rounded-lg p-4 mb-4 transition-all duration-300 ease-in-out items-center justify-between"
-          :class="anime.completed ? 'border-green-400' : 'border-gray-700'">
+          :class="anime.completed ? 'border-green-400 completed' : 'border-gray-700'">
           
           <!-- Sezione Immagine -->
           <div class="anime-info flex basis-8/12 flex-col md:flex-row mx-auto text-center md:text-left md:mx-2 gap-4 items-center mb-4 md:mb-0">
