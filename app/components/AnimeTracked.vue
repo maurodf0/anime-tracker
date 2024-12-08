@@ -9,7 +9,7 @@
           
           <!-- Sezione Immagine -->
           <div class="anime-info flex basis-8/12 flex-col md:flex-row mx-auto text-center md:text-left md:mx-2 gap-4 items-center mb-4 md:mb-0">
-            <img :src="anime.img" class="w-24 h-24 rounded-lg object-cover" />
+            <img :src="anime.img" class="w-24 h-auto rounded-lg object-cover" />
             
             <!-- Dati Anime -->
             <div class="anime-data flex flex-col justify-center">
