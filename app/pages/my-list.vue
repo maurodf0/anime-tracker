@@ -10,6 +10,8 @@
         </UFormGroup>
         <AnimeTracked :items="filteredAnime"/>
     </UContainer>
+
+          <UNotifications />
   </template>
 
 <script setup>
