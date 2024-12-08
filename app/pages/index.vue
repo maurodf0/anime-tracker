@@ -12,20 +12,20 @@ useSeoMeta({
 
 <template>
   <div class="wrapper">
-  <UContainer class="max-w-[1080px] mx-auto px-4 min-h-screen">
-    
-  <KeepAlive>
-    <AnimeSearch />
-  </KeepAlive>
+    <UContainer class="max-w-[1080px] mx-auto px-4 min-h-screen">
+      
+    <KeepAlive>
+      <AnimeSearch />
+    </KeepAlive>
 
-    <h2 class="py-4">Anime Tracked</h2>
-    <AnimeTracked :items="myAnimeList" :limit="4"/>
-   
-
-    <!-- Notifiche -->
-    <UNotifications />
+      <h2 class="py-4">Anime Tracked</h2>
+      <AnimeTracked :items="myAnimeList" :limit="4"/>
     
-  </UContainer>
+
+      <!-- Notifiche -->
+      <UNotifications />
+      
+    </UContainer>
   </div>
 </template>
 
