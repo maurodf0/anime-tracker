@@ -22,10 +22,6 @@ useSeoMeta({
   description: 'AnimeTracker: The App for Track your animes, choose every anime you are watching and start tracking it',
 })
 
-onMounted(() => {
-  
-  console.log('Test controllo',myAnimeList.value)
-})
 const { myAnimeList } = useTracking();
 
 
@@ -37,8 +33,7 @@ const filteredAnime = computed(() => {
     );
   });
 
-  console.log('Test controllo',filteredAnime.value)
-  console.log('Test controllo',myAnimeList.value)
+
 
        
 </script>
