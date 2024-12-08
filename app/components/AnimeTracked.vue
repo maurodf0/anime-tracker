@@ -42,33 +42,38 @@
                 Remove Anime
               </a>
           </div>
-             <UModal v-model="isOpen">
-        <div class="p-4">
-        <h4>Insert episodes seen</h4>
-         <UFormGroup :required="true" class="w-full" name="episodes">
-            <UInput 
-              type="number"
-               max="anime.totalEpisodes"   
-               class="w-full bg-neutral-800 text-neutral-100 border-neutral-600 focus:ring-indigo-500"
-            />
-        </UFormGroup>
-         <UButton 
-            variant="solid" 
-            :loading="pending"
-            icon="i-heroicons-outline-magnifying-glass"
-            class="bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-800 transition-colors rounded-lg px-6 py-2"
-            type="submit"
-        >
-            Update
-        </UButton>
-      </div>
-    </UModal>
 
         </div>
 
       <div class="text-gray-400 text-center" v-else>
         There's nothing here, <NuxtLink class="underline" to="/">add anime to your list</NuxtLink>
       </div>
+
+        <UModal v-model="isOpen">
+          <div class="p-4">
+          <h4>Insert episodes seen</h4>
+          <UForm @submit="updateEps(anime)"
+            class="flex items-center py-2 w-full gap-4">
+          <UFormGroup class="py-2 w-full" :required="true" name="episodes">
+              <UInput 
+                v-model="animeupdateCurrentEps" 
+                placeholder="Episodes seen"
+                type="number"
+                max="anime.totalEpisodes"   
+                class="w-full bg-neutral-800 text-neutral-100 border-neutral-600 focus:ring-indigo-500"
+              />
+          </UFormGroup>
+          <UButton 
+            variant="solid" 
+            :loading="pending"
+            icon="i-heroicons-outline-magnifying-glass"
+            class="bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-800 transition-colors rounded-lg px-6 py-2"
+            type="submit" >
+            Update
+        </UButton>
+        </UForm>
+      </div>
+    </UModal>
 
       <div v-if="limit">
        <NuxtLink to="/my-list"> <UButton class="text-center mx-auto mt-4 flex w-full justify-center bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-800 rounded-lg py-2">
@@ -84,6 +89,7 @@
 <script setup>
 
   const isOpen = ref(false);  
+  const animeupdateCurrentEps = ref(0);
 
 const props =defineProps({
     items: Array,
@@ -99,6 +105,11 @@ const animeItems = computed(() => {
 
 const toast = useToast()
 const { myAnimeList } = useTracking();
+
+const updateEps = (anime) => {
+animeupdateCurrentEps.value = anime.currentEps;
+}
+
 
 const addEps = (anime) => {
   if(anime.completed){
