@@ -80,9 +80,9 @@ const addEps = (anime) => {
         if(anime.currentEps == anime.totalEpisodes){
         anime.completed = true
         toast.add({
-            title: 'You must insert data for search',
-            description: 'Write your anime before start searching',
-            color: 'red'
+            title: 'Congratulation, you completed this anime!',
+
+            color: 'green'
       })
         return
        }
