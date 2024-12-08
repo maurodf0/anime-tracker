@@ -120,12 +120,18 @@ const addEps = (anime) => {
 .completed:after {
   content: 'COMPLETED';
   position: absolute;
-  bottom: 10px;
+  bottom: 5px;
   right: 15px;
   font-size: 28px;
   z-index: 0;
   opacity: 0.75;
   color:black;
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .completed:after {
+    content: none;
+  }
 }
 </style>
