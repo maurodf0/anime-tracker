@@ -50,7 +50,7 @@
     <UModal v-model="isOpen">
       <div class="p-4">
         <h4>Insert episodes seen</h4>
-        <UForm @submit.prevent="updateEps">
+        <UForm @submit="updateEps">
           <UFormGroup class="py-2 w-full" :required="true" name="episodes">
             <UInput
               v-model="animeupdateCurrentEps"
