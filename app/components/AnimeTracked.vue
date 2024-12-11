@@ -109,10 +109,27 @@ const animeItems = computed(() => {
 const toast = useToast()
 const { myAnimeList } = useTracking();
 
-const updateEps = (anime) => {
-animeupdateCurrentEps.value = anime.currentEps;
-}
+const openModal = (anime) => {
+  selectedAnime.value = anime;
+  animeupdateCurrentEps.value = anime.currentEps;
+  isOpen.value = true;
+};
 
+const updateEps = () => {
+  if (selectedAnime.value) {
+    selectedAnime.value.currentEps = animeupdateCurrentEps.value;
+    if (selectedAnime.value.currentEps >= selectedAnime.value.totalEpisodes) {
+      selectedAnime.value.completed = true;
+      toast.add({
+        title: 'Congratulations, you completed this anime!',
+        color: 'green',
+      });
+    } else {
+      selectedAnime.value.completed = false;
+    }
+    isOpen.value = false;
+  }
+};
 
 const addEps = (anime) => {
   if(anime.completed){
