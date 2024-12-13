@@ -53,9 +53,6 @@
 
 <script setup>
 
-
-import { watch} from 'vue';
-
 const route = useRoute()
 const toast = useToast();
 const id = ref(Array.isArray(route.params.id) ? route.params.id[0] : route.params.id);
