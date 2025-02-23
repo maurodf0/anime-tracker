@@ -1,6 +1,6 @@
 <template>
     <div>
-        <UForm @submit="searchAnime" :state="state" :schema="schema" class="flex w-full gap-4">
+        <UForm @submit="searchAnime()" :state="state" :schema="schema" class="flex w-full gap-4">
         <UFormGroup :required="true" class="w-full" name="query">
             <UInput 
             v-model="state.query" 
