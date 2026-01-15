@@ -15,7 +15,7 @@
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@vite-pwa/nuxt": "^0.10.6",
     "gsap": "^3.12.5",
-    "nuxt": "^3.17.1",
+    "nuxt": "^4.2.2",
     "vue": "latest",
     "vue-router": "latest",
     "zod": "^3.23.8"
