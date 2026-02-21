@@ -1,8 +1,29 @@
-# Nuxt Minimal Starter
+# 📺 AnimeTracker
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+**AnimeTracker** is a sleek, modern web application built with Nuxt, designed to help you keep track of your favorite anime. Search for upcoming series, track your progress episode by episode, and never miss a beat in your anime journey.
 
-## Setup
+![Anime Tracker Preview](https://via.placeholder.com/800x400/1e1b4b/ffffff?text=Anime+Tracker+Dashboard)
+
+## ✨ Features
+
+- **🔍 Smart Search**: Effortlessly search for any anime using the Jikan API (MyAnimeList).
+- **📝 Personal List**: Add anime to your personal tracking list with a single click.
+- **📈 Progress Tracking**: Keep track of the episodes you've watched.
+- **📱 PWA Ready**: Install the app on your device for a native-like experience.
+- **🎨 Premium UI**: Beautiful, dark-themed interface built with Nuxt UI and Tailwind CSS.
+- **💾 Auto-Save**: Your list is automatically saved to local storage.
+
+## 🚀 Tech Stack
+
+- **Framework**: [Nuxt 4](https://nuxt.com/)
+- **UI Components**: [Nuxt UI](https://ui.nuxt.com/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [GSAP](https://gsap.com/) & [AutoAnimate](https://auto-animate.formkit.com/)
+- **API**: [Jikan API](https://jikan.moe/)
+- **Validation**: [Zod](https://zod.dev/)
+- **PWA**: [@vite-pwa/nuxt](https://vite-pwa-org.netlify.app/frameworks/nuxt.html)
+
+## 🛠️ Setup
 
 Make sure to install dependencies:
 
@@ -20,7 +41,7 @@ yarn install
 bun install
 ```
 
-## Development Server
+## 💻 Development Server
 
 Start the development server on `http://localhost:3000`:
 
@@ -38,7 +59,7 @@ yarn dev
 bun run dev
 ```
 
-## Production
+## 🏗️ Production
 
 Build the application for production:
 
@@ -56,7 +77,7 @@ yarn build
 bun run build
 ```
 
-Locally preview production build:
+Locally preview the production build:
 
 ```bash
 # npm
@@ -72,4 +93,9 @@ yarn preview
 bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+Developed with ❤️ by [Mauro](https://github.com/maurodf0)
